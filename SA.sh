@@ -48,7 +48,8 @@ while true; do
         }
 	fi	
     else
-        echo "$( date "+%Y年%m月%d日%H时%M分%S秒") *📵- 暗屏状态，跳过优化*" >>三星.log    
+        echo "$( date "+%Y年%m月%d日%H时%M分%S秒") *📵- 暗屏状态，跳过优化*" >>三星.log   
+        lock_value "/sys/devices/virtual/sec/tsp/cmd" "set_scan_rate,0"		
     fi
     sleep 10
 done
