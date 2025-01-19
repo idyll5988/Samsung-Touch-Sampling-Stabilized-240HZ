@@ -50,5 +50,5 @@ while true; do
     else
         echo "$( date "+%Y年%m月%d日%H时%M分%S秒") *📵- 暗屏状态，跳过优化*" >>三星.log    
     fi
-    sleep 15
+    sleep 10
 done
