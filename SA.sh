@@ -39,12 +39,14 @@ while true; do
     screen_status=$(dumpsys window | grep "mScreenOn" | grep true)  
     if [[ "${screen_status}" ]]; then
 	echo "$( date "+%Y年%m月%d日%H时%M分%S秒") *📲- 亮屏运行*" >>三星.log
+	if [[ "$(getprop ro.product.model)" == SM-S928* ]]; then
 	   [[ -e /sys/devices/virtual/sec/tsp/cmd ]] && {
 	    echo "$( date "+%Y年%m月%d日%H时%M分%S秒") *设置触控采样为240Hz*" >> 三星.log
         lock_value "/sys/devices/virtual/sec/tsp/cmd" "set_scan_rate,1"
         lock_value "/sys/devices/virtual/sec/tsp/cmd" "set_game_mode,0"
 	    lock_value "/sys/devices/virtual/sec/tsp/cmd" "set_game_mode,1"
         }
+	fi	
     else
         echo "$( date "+%Y年%m月%d日%H时%M分%S秒") *📵- 暗屏状态，跳过优化*" >>三星.log    
     fi
